@@ -15,10 +15,15 @@ resource "azurerm_postgresql_flexible_server" "example" {
   administrator_login          = "devops_dba"
   administrator_password       = "Larak2013"
   version                      = "12"
-  sku_name                     = "Standard_D2s_v3"
+  sku_name                     = "Standard_E32s_v3"
   storage_mb                   = 32768
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
 
   // Other configurations as needed
 }
+
+provider "azurerm" {
+  features {}
+}
+
