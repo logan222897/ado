@@ -20,11 +20,5 @@ resource "azurerm_postgresql_flexible_server" "example" {
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
 
-  storage {
-    auto_grow_enabled = true
-  }
-
-  lifecycle {
-    ignore_changes = [administrator_login_password]
-  }
+  // Other configurations as needed
 }
