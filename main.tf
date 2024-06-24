@@ -20,16 +20,16 @@ resource "azurerm_postgresql_flexible_server" "example" {
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
 }
-
 resource "null_resource" "psql_hello_world" {
   depends_on = [azurerm_postgresql_flexible_server.example]
 
   provisioner "local-exec" {
     command = <<-EOF
-      PGPASSWORD='Larak2013' psql -h ${azurerm_postgresql_flexible_server.example.fully_qualified_domain_name} -U devops_dba@${azurerm_postgresql_flexible_server.example.name} -d postgres -c "CREATE TABLE IF NOT EXISTS hello_world (message text); INSERT INTO hello_world VALUES ('Hello, World!');"
+      PGPASSWORD='${var.admin_password}' psql -h ${azurerm_postgresql_flexible_server.example.fully_qualified_domain_name} -U devops_dba@${azurerm_postgresql_flexible_server.example.name} -d postgres -c "CREATE TABLE IF NOT EXISTS hello_world (message text); INSERT INTO hello_world VALUES ('Hello, World!');"
     EOF
     environment = {
-      PGPASSWORD = "Larak2013"
+      PGPASSWORD = var.admin_password
     }
   }
 }
+
