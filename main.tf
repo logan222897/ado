@@ -23,7 +23,4 @@ resource "azurerm_postgresql_flexible_server" "example" {
   // Other configurations as needed
 }
 
-provider "azurerm" {
-  features {}
-}
 
