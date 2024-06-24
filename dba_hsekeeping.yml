@@ -1,3 +1,4 @@
+
 trigger:
   branches:
     include:
@@ -6,6 +7,9 @@ trigger:
 schedules:
   - cron: "0 * * * *"
     displayName: Hourly run
+    branches:
+      include:
+        - main
     always: true
 
 pool:
@@ -13,4 +17,4 @@ pool:
 
 steps:
 - script: ./dba_hsekeeping.ksh
-  displayName: 'Run Hello World script'
+  displayName: 'Run housekeeping script'
