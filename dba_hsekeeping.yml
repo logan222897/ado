@@ -15,6 +15,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: sudo apt-get update && sudo apt-get install -y dos2unix
+  displayName: 'Install dos2unix'
+
+- script: dos2unix ./dba_hsekeeping.ksh
+  displayName: 'Convert line endings'
+
 - script: chmod +x ./dba_hsekeeping.ksh
   displayName: 'Set execute permission on housekeeping script'
 
