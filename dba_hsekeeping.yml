@@ -1,4 +1,3 @@
-
 trigger:
   branches:
     include:
@@ -16,5 +15,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: chmod +x ./dba_hsekeeping.ksh
+  displayName: 'Set execute permission on housekeeping script'
+
 - script: ./dba_hsekeeping.ksh
   displayName: 'Run housekeeping script'
