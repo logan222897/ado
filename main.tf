@@ -20,8 +20,6 @@ resource "azurerm_postgresql_flexible_server" "example" {
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
 }
-resource "null_resource" "psql_hello_world" {
-  depends_on = [azurerm_postgresql_flexible_server.example]
 
 
 
